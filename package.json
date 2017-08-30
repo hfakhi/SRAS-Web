@@ -1,6 +1,9 @@
 {
   "name": "inspinia",
   "version": "2.7.1",
+  "engines": {
+      "node": "6.11.2"
+  },
   "scripts": {
     "ng": "ng",
     "build": "ng build",
