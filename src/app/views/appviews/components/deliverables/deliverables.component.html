@@ -1,0 +1,65 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-8">
+    <h2>Deliverables</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="active">
+        <strong>Deliverables</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-4">
+      <br/><br/>
+      <button class="btn btn-primary btn-lg">Ajouter</button>
+      <button id="costingBtn" class="btn btn-primary btn-lg " [disabled]="!selected">Costing</button>
+    <button id="costingBtn" class="btn btn-primary btn-lg " [disabled]="!selected">Alignment</button>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRightBig">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="text-center m-t-lg">
+        <small>
+        </small>
+      </div>
+      <kendo-grid
+        [groupable]="true"
+        [data]="gridView"
+        [group]="groups"
+        (groupChange)="groupChange($event)"
+        (dataStateChange)="dataStateChange($event)"
+        [filterable]="true"
+        [pageSize]="state.take"
+        [skip]="state.skip"
+        [sort]="state.sort"
+        [filter]="state.filter"
+        [sortable]="true"
+        [pageable]="true"
+        [selectable]="true"
+        (selectionChange)="selectionChange($event)"
+      >
+        <kendo-grid-column field="DeliverablesID" title="ID" [width]="80"></kendo-grid-column>
+        <kendo-grid-column field="Name" title="Name" [width]="300"></kendo-grid-column>
+        <kendo-grid-column field="SAPCode" title="SAP Code" [width]="120"></kendo-grid-column>
+        <kendo-grid-column field="DeliverablesType.Name" title="Deliverables Type">
+          <ng-template kendoGridGroupHeaderTemplate let-value="value">
+            Project: {{value}}
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="Project.Name" title="Project">
+          <ng-template kendoGridGroupHeaderTemplate let-value="value">
+            Project: {{value}}
+          </ng-template>
+        </kendo-grid-column>
+
+
+      </kendo-grid>
+
+    </div>
+  </div>
+</div>
